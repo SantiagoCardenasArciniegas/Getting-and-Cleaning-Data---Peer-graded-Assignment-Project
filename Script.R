@@ -1,4 +1,4 @@
-#Merges the training and the test sets to create one data set.
+#1)Merges the training and the test sets to create one data set.
 
 featureNames <- read.table("UCI HAR Dataset/features.txt")
 activityLabels <- read.table("UCI HAR Dataset/activity_labels.txt", header = FALSE)
@@ -13,7 +13,7 @@ subject <- rbind(subjectTrain, subjectTest)
 activity <- rbind(activityTrain, activityTest)
 features <- rbind(featuresTrain, featuresTest)
 
-#Extracts only the measurements on the mean and standard deviation for each 
+#2)Extracts only the measurements on the mean and standard deviation for each 
 #measurement.
 
 names(activity)<-c("Activity")
@@ -30,7 +30,7 @@ for (i in 1:6){
   extractedData$Activity[extractedData$Activity == i] <- as.character(activityLabels[i,2])
 }
 
-#Uses descriptive activity names to name the activities in the data set
+#3)Uses descriptive activity names to name the activities in the data set
 
 names(extractedData)<-gsub("Acc", "Accelerometer", names(extractedData))
 names(extractedData)<-gsub("Gyro", "Gyroscope", names(extractedData))
@@ -45,7 +45,7 @@ names(extractedData)<-gsub("-freq()", "Frequency", names(extractedData), ignore.
 names(extractedData)<-gsub("angle", "Angle", names(extractedData))
 names(extractedData)<-gsub("gravity", "Gravity", names(extractedData))
 
-#From the data set in step 4, creates a second, independent tidy data set with the 
+#4)From the data set in step 4, creates a second, independent tidy data set with the 
 #average of each variable for each activity and each subject.
 
 extractedData$Activity <- as.factor(extractedData$Activity)
