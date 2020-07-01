@@ -46,7 +46,7 @@ names(extractedData)<-gsub("angle", "Angle", names(extractedData))
 names(extractedData)<-gsub("gravity", "Gravity", names(extractedData))
 
 #4)From the data set in step 4, creates a second, independent tidy data set with the 
-#average of each variable for each activity and each subject.
+##average of each variable for each activity and each subject.
 
 extractedData$Activity <- as.factor(extractedData$Activity)
 
